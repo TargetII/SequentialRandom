@@ -21,9 +21,17 @@ If you have three strats, then you need to include the intersection of each, bec
 ```{r}
 library(blockrand)
 
-male = blockrand(n = 100, id.prefix = "M", block.prefix = "M", stratum = "Male")
+maleHighRisk = blockrand(n = 100, id.prefix = "MHR", block.prefix = "MHR", stratum = "MHR", levels = c("Treatment", "Control"))
 male
-female = blockrand(n = 100, id.prefix = "F", stratum = "Female")
+
+write.csv(male, "male.csv", row.names = FALSE)
+
+maleLowRisk = blockrand(n = 100, id.prefix = "MLR", stratum = "MLR", levels = c("Treatment", "Control"))
+write.csv(female, "female.csv", row.names = FALSE)
+
+femaleHighRisk = blockrand(n = 100, id.prefix = "FHR", stratum = "FHR", levels = c("Treatment", "Control"))
+
+maleHighRisk = blockrand(n = 100, id.prefix = "MHR", stratum = "MHR", levels = c("Treatment", "Control"))
 
 my.study = rbind(male, female); my.study
 ```
